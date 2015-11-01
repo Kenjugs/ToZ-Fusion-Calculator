@@ -14,7 +14,10 @@ namespace Skill_Calculator {
             // populate dropdown list
             SetConnectionString();
             SetSQLSelect();
-            BindDropdownList();
+
+            if (!IsPostBack) {
+                BindDropdownList();
+            }
         }
 
         private void SetConnectionString() {
@@ -48,7 +51,7 @@ namespace Skill_Calculator {
             SqlDataAdapter adapter = new SqlDataAdapter();
 
             cmd.CommandType = CommandType.StoredProcedure;
-            
+
             retrievalDT.Columns.Add("Skill1");
             retrievalDT.Columns.Add("Skill2");
             resultDT = retrievalDT.Clone();
