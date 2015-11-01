@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.master.cs" Inherits="Skill_Calculator.Template" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Tales of Zestiria Skill Fusion Calculator</title>
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form id="form1" runat="server">
+            <header>
+                <span>Skill Fusion Calculator</span>
+            </header>
+            <asp:ContentPlaceHolder ID="body" runat="server"></asp:ContentPlaceHolder>
+        </form>
+        <div class="push"></div>
+    </div>
+    <footer>
+        <ul>
+            <li><a href="Default.aspx">Home</a></li>
+            <li><a href="http://www.talesofgame.com/en/">Tales Home</a></li>
+            <li><a href="http://www.reddit.com/r/tales">Reddit</a></li>
+            <li><a href="http://store.steampowered.com/app/351970/">Steam</a></li>
+            <li><a href="About.aspx">About</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿/*
+================================================================================
+|                                  PREFORMAT                                   |
+================================================================================
+*/
+
+* {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma;
+}
+
+html, body, form {
+    height: 100%;
+}
+
+/*
+================================================================================
+|                                STICKY FOOTER                                 |
+================================================================================
+*/
+
+.wrapper {
+    min-height: 100%;
+    margin: 0 auto -60px;
+}
+
+.push {
+    height: 60px;
+}
+
+footer {
+    height: 60px;
+}
+
+/*
+================================================================================
+|                             HEADER FOOTER STYLES                             |
+================================================================================
+*/
+
+header {
+    display: table;
+    height: 100px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    header span {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+footer {
+    display: table;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    footer ul {
+        display: table-cell;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+        vertical-align: middle;
+    }
+
+    footer li {
+        display: inline-block;
+    }
+
+        footer li:after {
+            content: " |";
+            color: #666;
+        }
+
+        footer li:last-child:after {
+            content: none;
+        }
+
+/*
+================================================================================
+|                                PAGE SPECIFIC                                 |
+================================================================================
+*/
+
+header {
+    background-color: #DDD;
+    border-radius: 0 0 10px 10px;
+}
+
+    header span {
+        font-size: 16pt;
+        font-weight: bold;
+    }
+
+footer {
+    background-color: #DDD;
+    border-radius: 10px 10px 0 0;
+}
+
+    footer a:visited {
+        color: blue;
+    }
+
+#divBody {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#divBody .sectionHeader {
+    display: block;
+    font-size: 12pt;
+    font-weight: bold;
+    margin: 10px 0;
+}
