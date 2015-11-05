@@ -15,7 +15,6 @@ namespace Skill_Calculator {
             DataTable retrievalDT = new DataTable();
             DataTable resultDT = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
-            List<SqlParameter> paramList = new List<SqlParameter>();
 
             retrievalDT.Columns.Add("Skill1");
             retrievalDT.Columns.Add("Skill2");
@@ -30,18 +29,13 @@ namespace Skill_Calculator {
                             continue;
                         }
 
-                        paramList.Add(new SqlParameter("@Skill1ID", skill1));
-                        paramList.Add(new SqlParameter("@Skill2ID", skill2));
-
-                        foreach (SqlParameter param in paramList) {
-                            cmd.Parameters.Add(param);
-                        }
+                        cmd.Parameters.AddWithValue("@Skill1ID", skill1);
+                        cmd.Parameters.AddWithValue("@Skill2ID", skill2);
 
                         adapter.SelectCommand = cmd;
                         adapter.Fill(retrievalDT);
 
                         cmd.Parameters.Clear();
-                        paramList.Clear();
                     }
                 }
 
