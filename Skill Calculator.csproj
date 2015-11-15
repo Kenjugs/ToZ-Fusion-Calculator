@@ -69,7 +69,7 @@
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="scripts\jquery-2.1.4.min.js" />
-    <Content Include="styles\style.css" />
+    <Content Include="styles\style.min.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

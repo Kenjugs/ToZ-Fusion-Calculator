@@ -1,26 +1,23 @@
-﻿using Skill_Calculator.utilities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Skill_Calculator.utilities;
 
 namespace Skill_Calculator {
-
     public partial class Default : Page {
-        private dbManager _dbMan = new dbManager();
+        private readonly DbManager _dbMan = new DbManager();
 
         protected void ddlReverseSearch_SelectedIndexChanged(object sender, EventArgs e) {
-            DataTable retrievalDT = new DataTable();
-            DataTable resultDT = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
+            var retrievalDt = new DataTable();
+            var adapter = new SqlDataAdapter();
 
-            retrievalDT.Columns.Add("Skill1");
-            retrievalDT.Columns.Add("Skill2");
-            resultDT = retrievalDT.Clone();
+            retrievalDt.Columns.Add("Skill1");
+            retrievalDt.Columns.Add("Skill2");
+            var resultDt = retrievalDt.Clone();
 
-            using (SqlCommand cmd = new SqlCommand("SProc_Normal_Calculation", _dbMan.ConnectToDB())) {
+            using (var cmd = new SqlCommand("SProc_Normal_Calculation", _dbMan.ConnectToDatabase())) {
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 for (var skill1 = 1; skill1 <= 50; ++skill1) {
@@ -33,30 +30,33 @@ namespace Skill_Calculator {
                         cmd.Parameters.AddWithValue("@Skill2ID", skill2);
 
                         adapter.SelectCommand = cmd;
-                        adapter.Fill(retrievalDT);
+                        adapter.Fill(retrievalDt);
 
                         cmd.Parameters.Clear();
                     }
                 }
 
-                foreach (DataRow row in retrievalDT.Rows) {
+                foreach (DataRow row in retrievalDt.Rows) {
                     if (row["ID"].ToString() == ddlReverseSearch.SelectedValue) {
-                        resultDT.ImportRow(row);
+                        resultDt.ImportRow(row);
                     }
                 }
 
-                gvReverseCalc.DataSource = resultDT;
+                ViewState["GridViewDataTable"] = resultDt;
+                gvReverseCalc.DataSource = ViewState["GridViewDataTable"];
                 gvReverseCalc.DataBind();
             }
         }
 
         protected void Page_Load(object sender, EventArgs e) {
             SetConnectionString();
-            SetSQLSelect();
+            SetSqlSelect();
 
-            if (!IsPostBack) {
-                BindDropdownList();
-            }
+            if (IsPostBack)
+                return;
+
+            BindDropdownList();
+            gvReverseCalc.DataBind();
         }
 
         private void BindDropdownList() {
@@ -71,12 +71,18 @@ namespace Skill_Calculator {
             dsSkillNames.ProviderName = _dbMan.Provider;
         }
 
-        private void SetSQLSelect() {
-            var sql = "SELECT ID, SkillName FROM [Skill_Names]";
+        private void SetSqlSelect() {
+            const string sql = "SELECT ID, SkillName FROM [Skill_Names]";
 
             dsSkillNames.SelectCommandType = SqlDataSourceCommandType.Text;
             dsSkillNames.SelectCommand = sql;
             dsSkillNames.DataBind();
+        }
+
+        protected void gvReverseCalc_PageIndexChanging(object sender, GridViewPageEventArgs e) {
+            gvReverseCalc.PageIndex = e.NewPageIndex;
+            gvReverseCalc.DataSource = ViewState["GridViewDataTable"];
+            gvReverseCalc.DataBind();
         }
     }
 }

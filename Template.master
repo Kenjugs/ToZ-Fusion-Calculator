@@ -6,7 +6,7 @@
     <title>Tales of Zestiria Skill Fusion Calculator</title>
     <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/style.min.css" />
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 
@@ -21,13 +21,13 @@
         <div class="push"></div>
     </div>
     <footer>
-        <ul>
-            <li><a href="Default.aspx">Home</a></li>
-            <li><a href="http://www.talesofgame.com/en/">Tales Home</a></li>
-            <li><a href="http://www.reddit.com/r/tales">Reddit</a></li>
-            <li><a href="http://store.steampowered.com/app/351970/">Steam</a></li>
-            <li><a href="About.aspx">About</a></li>
-        </ul>
+        <nav>
+            <a href="Default.aspx">Home</a> |
+            <a href="http://www.talesofgame.com/en/">Tales Home</a> |
+            <a href="http://www.reddit.com/r/tales">Reddit</a> |
+            <a href="http://store.steampowered.com/app/351970/">Steam</a> |
+            <a href="About.aspx">About</a> |
+        </nav>
     </footer>
 </body>
 </html>
