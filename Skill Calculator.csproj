@@ -69,6 +69,7 @@
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="scripts\jquery-2.1.4.min.js" />
+    <Content Include="Simulator.aspx" />
     <Content Include="styles\style.min.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -88,6 +89,13 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simulator.aspx.cs">
+      <DependentUpon>Simulator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Simulator.aspx.designer.cs">
+      <DependentUpon>Simulator.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Template.master.cs">
       <DependentUpon>Template.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

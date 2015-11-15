@@ -14,11 +14,22 @@
     <div class="wrapper">
         <form id="form1" runat="server">
             <header>
-                <span>Skill Fusion Calculator</span>
+                <div class="headerRow">
+                    <div>
+                        <span>Skill Fusion Calculator</span>
+                    </div>
+                </div>
+                <div class="headerRow">
+                    <div>
+                        <nav>
+                            <a href="Default.aspx">Home</a>
+                            <%--<a href="Simulator.aspx">Fusion Simulator</a>--%>
+                        </nav>
+                    </div>
+                </div>
             </header>
             <asp:ContentPlaceHolder ID="body" runat="server"></asp:ContentPlaceHolder>
         </form>
-        <div class="push"></div>
     </div>
     <footer>
         <nav>
@@ -26,7 +37,7 @@
             <a href="http://www.talesofgame.com/en/">Tales Home</a> |
             <a href="http://www.reddit.com/r/tales">Reddit</a> |
             <a href="http://store.steampowered.com/app/351970/">Steam</a> |
-            <a href="About.aspx">About</a> |
+            <a href="About.aspx">About</a>
         </nav>
     </footer>
 </body>
