@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Template.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Skill_Calculator.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="Template.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Skill_Calculator.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 
