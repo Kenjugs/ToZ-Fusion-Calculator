@@ -12,7 +12,7 @@
                 Desired skill:
                 <asp:DropDownList ID="ddlReverseSearch" runat="server" AppendDataBoundItems="True"
                     OnSelectedIndexChanged="ddlReverseSearch_SelectedIndexChanged" AutoPostBack="true">
-                    <asp:ListItem Selected="True"></asp:ListItem>
+                    <asp:ListItem Selected="True" Text="" Value="-1"></asp:ListItem>
                 </asp:DropDownList>
                 <asp:GridView ID="gvReverseCalc" runat="server" AutoGenerateColumns="False"
                     CellPadding="3" ForeColor="#333333" GridLines="None" CssClass="gvReverseCalc" AllowPaging="True" OnPageIndexChanging="gvReverseCalc_PageIndexChanging">
@@ -28,7 +28,6 @@
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                     <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                    <PagerSettings Mode="NumericFirstLast" />
                     <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                     <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />

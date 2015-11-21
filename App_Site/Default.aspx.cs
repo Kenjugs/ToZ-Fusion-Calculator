@@ -43,6 +43,7 @@ namespace Skill_Calculator {
                 }
 
                 ViewState["GridViewDataTable"] = resultDt;
+                gvReverseCalc.PageIndex = 0;
                 gvReverseCalc.DataSource = ViewState["GridViewDataTable"];
                 gvReverseCalc.DataBind();
             }

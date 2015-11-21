@@ -88,7 +88,6 @@
     <Compile Include="App_Site\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Site\Simulator.aspx.cs">
       <DependentUpon>Simulator.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -96,6 +95,7 @@
     <Compile Include="App_Site\Simulator.aspx.designer.cs">
       <DependentUpon>Simulator.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Site\Template.master.cs">
       <DependentUpon>Template.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
