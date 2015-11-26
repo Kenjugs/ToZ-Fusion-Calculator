@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
@@ -6,12 +7,16 @@ using System.Web.UI.WebControls;
 using Skill_Calculator.utilities;
 
 namespace Skill_Calculator {
+
     public partial class Default : Page {
+
         private readonly DbManager _dbMan = new DbManager();
 
         protected void ddlReverseSearch_SelectedIndexChanged(object sender, EventArgs e) {
+
             var retrievalDt = new DataTable();
             var adapter = new SqlDataAdapter();
+            var paramList = new List<SqlParameter>();
 
             retrievalDt.Columns.Add("Skill1");
             retrievalDt.Columns.Add("Skill2");
@@ -26,13 +31,12 @@ namespace Skill_Calculator {
                             continue;
                         }
 
-                        cmd.Parameters.AddWithValue("@Skill1ID", skill1);
-                        cmd.Parameters.AddWithValue("@Skill2ID", skill2);
+                        paramList.Add(new SqlParameter("@Skill1ID", skill1));
+                        paramList.Add(new SqlParameter("@Skill2ID", skill2));
 
-                        adapter.SelectCommand = cmd;
-                        adapter.Fill(retrievalDt);
+                        _dbMan.AppendDataTable(cmd, paramList, ref retrievalDt);
 
-                        cmd.Parameters.Clear();
+                        paramList.Clear();
                     }
                 }
 
@@ -50,6 +54,7 @@ namespace Skill_Calculator {
         }
 
         protected void Page_Load(object sender, EventArgs e) {
+
             SetConnectionString();
             SetSqlSelect();
 
@@ -61,6 +66,7 @@ namespace Skill_Calculator {
         }
 
         private void BindDropdownList() {
+
             ddlReverseSearch.DataSource = dsSkillNames;
             ddlReverseSearch.DataValueField = "ID";
             ddlReverseSearch.DataTextField = "SkillName";
@@ -68,11 +74,13 @@ namespace Skill_Calculator {
         }
 
         private void SetConnectionString() {
+
             dsSkillNames.ConnectionString = _dbMan.ConnectionString;
             dsSkillNames.ProviderName = _dbMan.Provider;
         }
 
         private void SetSqlSelect() {
+
             const string sql = "SELECT ID, SkillName FROM [Skill_Names]";
 
             dsSkillNames.SelectCommandType = SqlDataSourceCommandType.Text;
@@ -81,6 +89,7 @@ namespace Skill_Calculator {
         }
 
         protected void gvReverseCalc_PageIndexChanging(object sender, GridViewPageEventArgs e) {
+
             gvReverseCalc.PageIndex = e.NewPageIndex;
             gvReverseCalc.DataSource = ViewState["GridViewDataTable"];
             gvReverseCalc.DataBind();
