@@ -50,25 +50,30 @@ namespace Skill_Calculator {
 
             var skill1 = sender.Substring(sender.LastIndexOf('=') + 1);
             var skill2 = other.Substring(other.LastIndexOf('=') + 1);
-            var retrievalDt = new DataTable();
-            var paramList = new List<SqlParameter>();
 
-            retrievalDt.Columns.Add("Skill1");
-            retrievalDt.Columns.Add("Skill2");
+            if (skill1 != "0" || skill2 != "0") {
+                var retrievalDt = new DataTable();
+                var paramList = new List<SqlParameter>();
 
-            DbManager.ConnectToDatabase();
+                retrievalDt.Columns.Add("Skill1");
+                retrievalDt.Columns.Add("Skill2");
 
-            using (var cmd = new SqlCommand("SProc_Normal_Calculation", DbManager.Connection)) {
-                cmd.CommandType = CommandType.StoredProcedure;
-                paramList.Add(new SqlParameter("@Skill1ID", skill1));
-                paramList.Add(new SqlParameter("@Skill2ID", skill2));
+                DbManager.ConnectToDatabase();
 
-                retrievalDt = DbManager.GetDataSet(cmd, paramList).Tables[0];
+                using (var cmd = new SqlCommand("SProc_Normal_Calculation", DbManager.Connection)) {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    paramList.Add(new SqlParameter("@Skill1ID", skill1));
+                    paramList.Add(new SqlParameter("@Skill2ID", skill2));
+
+                    retrievalDt = DbManager.GetDataSet(cmd, paramList).Tables[0];
+                }
+
+                DbManager.CloseConnection();
+
+                return retrievalDt.Rows[0]["SkillName"].ToString();
+            } else {
+                return "(BLANK)";
             }
-
-            DbManager.CloseConnection();
-
-            return retrievalDt.Rows[0]["SkillName"].ToString();
         }
     }
 }

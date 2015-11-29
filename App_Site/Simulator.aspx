@@ -139,31 +139,27 @@
                     </table>
                     <table class="table inner results">
                         <tr class="tablerow">
-                            <td class="tablecell">1)
-                            </td>
+                            <td class="tablecell">1)</td>
                             <td class="tablecell centered">
-                                <asp:Label ID="lblResult1" runat="server"></asp:Label>
+                                <asp:Label ID="lblResult1" runat="server" Text="(BLANK)"></asp:Label>
                             </td>
                         </tr>
                         <tr class="tablerow">
-                            <td class="tablecell">2)
-                            </td>
+                            <td class="tablecell">2)</td>
                             <td class="tablecell centered">
-                                <asp:Label ID="lblResult2" runat="server"></asp:Label>
+                                <asp:Label ID="lblResult2" runat="server" Text="(BLANK)"></asp:Label>
                             </td>
                         </tr>
                         <tr class="tablerow">
-                            <td class="tablecell">3)
-                            </td>
+                            <td class="tablecell">3)</td>
                             <td class="tablecell centered">
-                                <asp:Label ID="lblResult3" runat="server"></asp:Label>
+                                <asp:Label ID="lblResult3" runat="server" Text="(BLANK)"></asp:Label>
                             </td>
                         </tr>
                         <tr class="tablerow">
-                            <td class="tablecell">4)
-                            </td>
+                            <td class="tablecell">4)</td>
                             <td class="tablecell centered">
-                                <asp:Label ID="lblResult4" runat="server"></asp:Label>
+                                <asp:Label ID="lblResult4" runat="server" Text="(BLANK)"></asp:Label>
                             </td>
                         </tr>
                     </table>
