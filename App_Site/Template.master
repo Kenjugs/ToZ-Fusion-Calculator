@@ -23,7 +23,7 @@
                     <div>
                         <nav>
                             <a href="Default.aspx">Home</a>
-                            <%--<a href="Simulator.aspx">Fusion Simulator</a>--%>
+                            <a href="Simulator.aspx">Fusion Simulator</a>
                         </nav>
                     </div>
                 </div>

@@ -1,28 +1,30 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Collections.Generic;
 
 namespace Skill_Calculator.utilities {
 
     public class DbManager {
 
-        public string ConnectionString { get; set; } = ConfigurationManager.ConnectionStrings["localDB"].ConnectionString;
+        private static string ConnectionString { get; set; } = ConfigurationManager.ConnectionStrings["localDB"].ConnectionString;
 
-        public string Provider { get; set; } = ConfigurationManager.ConnectionStrings["localDB"].ProviderName;
+        public static string Provider { get; set; } = ConfigurationManager.ConnectionStrings["localDB"].ProviderName;
 
-        public SqlConnection Connection { get; } = new SqlConnection();
+        public static SqlConnection Connection { get; set; } = new SqlConnection(ConnectionString);
 
         private SqlTransaction CurrentTransaction { get; set; } = null;
 
-        public SqlConnection ConnectToDatabase() {
+        public static SqlConnection ConnectToDatabase() {
 
-            Connection.ConnectionString = ConnectionString;
-            Connection.Open();
+            if (Connection.State != ConnectionState.Open) {
+                Connection.Open();
+            }
+
             return Connection;
         }
 
-        public void CloseConnection() {
+        public static void CloseConnection() {
 
             if (Connection.State != ConnectionState.Closed) {
                 Connection.Close();
@@ -56,7 +58,7 @@ namespace Skill_Calculator.utilities {
             CurrentTransaction = null;
         }
 
-        public void ExecuteNonQuery(ref SqlCommand cmd, List<SqlParameter> paramList) {
+        public static void ExecuteNonQuery(ref SqlCommand cmd, List<SqlParameter> paramList) {
 
             foreach (SqlParameter param in paramList) {
                 cmd.Parameters.Add(param);
@@ -66,7 +68,7 @@ namespace Skill_Calculator.utilities {
             cmd.Parameters.Clear();
         }
 
-        public DataSet GetDataSet(SqlCommand cmd, List<SqlParameter> paramList) {
+        public static DataSet GetDataSet(SqlCommand cmd, List<SqlParameter> paramList) {
 
             foreach (SqlParameter param in paramList) {
                 cmd.Parameters.Add(param);
@@ -81,7 +83,7 @@ namespace Skill_Calculator.utilities {
             return retval;
         }
 
-        public void AppendDataSet(SqlCommand cmd, List<SqlParameter> paramList, ref DataSet ds) {
+        public static void AppendDataSet(SqlCommand cmd, List<SqlParameter> paramList, ref DataSet ds) {
 
             foreach (SqlParameter param in paramList) {
                 cmd.Parameters.Add(param);
@@ -93,7 +95,7 @@ namespace Skill_Calculator.utilities {
             cmd.Parameters.Clear();
         }
 
-        public void AppendDataTable(SqlCommand cmd, List<SqlParameter> paramList, ref DataTable dt) {
+        public static void AppendDataTable(SqlCommand cmd, List<SqlParameter> paramList, ref DataTable dt) {
 
             foreach (SqlParameter param in paramList) {
                 cmd.Parameters.Add(param);
