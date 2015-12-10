@@ -22,6 +22,7 @@ namespace Skill_Calculator {
 
         private void LoadDropdowns() {
 
+            // TODO: FEATURE -> include skill icons in dropdown lists
             var strSql = "SELECT ID, SkillName FROM [Skill_Names]";
 
             dsSkillNames.SelectCommand = strSql;
@@ -48,6 +49,7 @@ namespace Skill_Calculator {
         [WebMethod]
         public static string Calculate(string sender, string other) {
 
+            // TODO: FEATURE -> include skill icon in results
             var skill1 = sender.Substring(sender.LastIndexOf('=') + 1);
             var skill2 = other.Substring(other.LastIndexOf('=') + 1);
 

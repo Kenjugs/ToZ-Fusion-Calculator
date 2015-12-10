@@ -89,7 +89,7 @@
                             <td class="tablecell">
                                 <div style="height: 50px; width: 50px; display: inline-block; background-color: green; vertical-align: middle;"></div>
                             </td>
-                            <td class="tablecell-div">Summary text or instructions maybe. Possibly item descriptions later.
+                            <td class="tablecell">Summary text or instructions maybe. Possibly item descriptions later.
                             </td>
                         </tr>
                     </table>

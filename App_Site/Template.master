@@ -22,13 +22,14 @@
                 <div class="headerRow">
                     <div>
                         <nav>
-                            <a href="Default.aspx">Home</a>
+                            <a href="Default.aspx">Reverse Calculation</a>
                             <a href="Simulator.aspx">Fusion Simulator</a>
                         </nav>
                     </div>
                 </div>
             </header>
             <asp:ContentPlaceHolder ID="body" runat="server"></asp:ContentPlaceHolder>
+            <div class="push"></div>
         </form>
     </div>
     <footer>
